@@ -12,7 +12,6 @@ abstract class ModuleServiceProvider extends ServiceProvider
     protected function loadRoutes()
     {
         $routesPath = $this->modulePath . '/../routes/web.php';
-
         if (file_exists($routesPath)) {
             Route::middleware('web')
                 ->group($routesPath);

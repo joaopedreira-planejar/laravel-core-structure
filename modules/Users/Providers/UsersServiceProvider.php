@@ -11,7 +11,7 @@ class UsersServiceProvider extends ModuleServiceProvider
     public function __construct($app)
     {
         parent::__construct($app);
-        $this->modulePath = __DIR__ . "/..";
+        $this->modulePath = __DIR__;
     }
 
     public function register() {}
@@ -20,24 +20,5 @@ class UsersServiceProvider extends ModuleServiceProvider
     {
         $this->loadRoutes();
         $this->loadMigrations();
-    }
-
-    protected function loadRoutes()
-    {
-        $routesPath = __DIR__ . '/../routes/web.php';
-
-        if (file_exists($routesPath)) {
-            Route::middleware('web')
-                ->group($routesPath);
-        }
-    }
-
-    protected function loadMigrations()
-    {
-        $migrationsPath = __DIR__ . '/../database/migrations';
-
-        if (is_dir($migrationsPath)) {
-            $this->loadMigrationsFrom($migrationsPath);
-        }
     }
 }
